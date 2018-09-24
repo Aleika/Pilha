@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projeto;
+package pratica4pilha;
 
 /**
  *
- * @author C6-PROF
+ * @author Ana Rute
  */
 public class Operacao {
     private char code;
@@ -23,5 +23,12 @@ public class Operacao {
         this.code = 'e';
         this.a = a;
     }
+    
+    public String toString(){
+        if(code=='e'){
+            return String.valueOf(this.a);
+        }else{
+            return String.valueOf(this.code);
+        }
+    }
 }
-
