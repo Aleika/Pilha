@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projeto;
+package pratica4pilha;
 
 import java.util.LinkedList;
 
 /**
  *
- * @author C6-PROF
+ * @author Ana Rute
  */
 public class Pilha<T> {
     private LinkedList<T>  conteudo;
@@ -23,15 +23,31 @@ public class Pilha<T> {
     }
     
      public T desempilha(){
-        return conteudo.removeFirst();
+        if(this.estaVazia()){
+            throw new Error("Pilha vazia");
+        }else{
+            return conteudo.removeFirst();
+        }
     }
      
      public T topo(){
-         return conteudo.getFirst();
+         if(this.estaVazia()){
+            throw new Error("Pilha vazia");
+        }else{
+            return conteudo.getFirst();
+        }
      }
      
      public boolean estaVazia(){
          return conteudo.isEmpty();
+     }
+     
+     public String toString(){
+        return conteudo.toString();
+     }
+     
+     public void reinicialize(){
+         conteudo.clear();
      }
     
     
