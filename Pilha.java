@@ -49,6 +49,17 @@ public class Pilha<T> {
      public void reinicialize(){
          conteudo.clear();
      }
+     
+     public String toStringInverse(){
+         Pilha p1 = new Pilha();
+         Pilha p2 = new Pilha();
+         p1.conteudo = this.conteudo;
+         while(!p1.estaVazia()){
+             p2.empilha(p1.topo());
+             p1.desempilha();
+         }
+         return p2.toString();
+     }
     
     
 }
