@@ -23,12 +23,36 @@ public class Operacao {
         this.code = 'e';
         this.a = a;
     }
-    
+        
     public String toString(){
         if(code=='e'){
             return String.valueOf(this.a);
         }else{
             return String.valueOf(this.code);
         }
+    }
+    
+    public char getCode() {
+        return code;
+    }
+
+    public void setCode(char code) {
+        this.code = code;
+    }
+
+    public double getA() {
+        return a;
+    }
+
+    public void setA(double a) {
+        this.a = a;
+    }
+
+    public double getB() {
+        return b;
+    }
+
+    public void setB(double b) {
+        this.b = b;
     }
 }
