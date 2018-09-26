@@ -28,6 +28,8 @@ public class CalcRPN {
         Double b = aPilha.desempilha();
         Double resultado = b + a;
         aPilha.empilha(resultado);
+        Operacao op = new Operacao('+',a,b);
+        hist.empilha(op);
     }
 
     public void menos() {
@@ -35,6 +37,8 @@ public class CalcRPN {
         Double b = aPilha.desempilha();
         Double resultado = b - a;
         aPilha.empilha(resultado);
+        Operacao op = new Operacao('-',a,b);
+        hist.empilha(op);
     }
 
     public void vezes() {
@@ -42,6 +46,8 @@ public class CalcRPN {
         Double b = aPilha.desempilha();
         Double resultado = b * a;
         aPilha.empilha(resultado);
+        Operacao op = new Operacao('*',a,b);
+        hist.empilha(op);
     }
 
     public void dividido() {
@@ -49,6 +55,8 @@ public class CalcRPN {
         Double b = aPilha.desempilha();
         Double resultado = b / a;
         aPilha.empilha(resultado);
+        Operacao op = new Operacao('/',a,b);
+        hist.empilha(op);
     }
 
     public Double resultado() {
@@ -73,9 +81,18 @@ public class CalcRPN {
             case "clear":
                 aPilha.reinicialize();
                 break;
+            case "hist":
+                System.out.println("Historico: " + hist.toStringInverse());
+                break;
+            case "undo":
+                this.cancela();
+                System.out.println("Historico: " + hist.toStringInverse());
+                break;
             default:
                 x = Double.parseDouble(cmd);
                 aPilha.empilha(x);
+                Operacao op = new Operacao(x);
+                hist.empilha(op);
                 break;
         }
     }
@@ -97,6 +114,15 @@ public class CalcRPN {
     }
 
     public void cancela() {
-
+        Operacao aux = hist.topo();
+        if(aux.getCode()=='e'){
+            aPilha.desempilha();
+            hist.desempilha();
+        }else{
+            aPilha.desempilha();
+            aPilha.empilha(hist.topo().getB());
+            aPilha.empilha(hist.topo().getA());
+            hist.desempilha();
+        }
     }
 }
