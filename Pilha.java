@@ -50,15 +50,22 @@ public class Pilha<T> {
          conteudo.clear();
      }
      
-     public String toStringInverse(){
-         Pilha p1 = new Pilha();
-         Pilha p2 = new Pilha();
-         p1.conteudo = this.conteudo;
+    public String toStringInverse(){
+         Pilha<T> p1 = new Pilha();
+//         Pilha p2 = new Pilha();
+//         p1.conteudo = this.conteudo;
+         while(!this.estaVazia()){
+             p1.empilha(this.topo());
+             this.desempilha();
+         }
+         String saida = p1.toString();
+         
          while(!p1.estaVazia()){
-             p2.empilha(p1.topo());
+             this.empilha(p1.topo());
              p1.desempilha();
          }
-         return p2.toString();
+         
+         return saida;
      }
     
     
